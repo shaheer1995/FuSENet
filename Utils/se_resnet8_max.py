@@ -55,7 +55,7 @@ def _handle_dim_ordering():
     global CONV_DIM2
     global CONV_DIM3
     global CHANNEL_AXIS
-    if K.image_dim_ordering() == 'tf':
+    if K.common.image_dim_ordering() == 'tf':
         CONV_DIM1 = 1
         CONV_DIM2 = 2
         CONV_DIM3 = 3
@@ -212,7 +212,7 @@ def SE_ResNet8(input_shape,codebooks, num_outputs):
 	if len(input_shape) != 4:
 		raise Exception("Input shape should be a tuple (nb_channels, kernel_dim1, kernel_dim2, kernel_dim3)")
 	
-	if K.image_dim_ordering() == 'tf':
+	if K.common.image_dim_ordering() == 'tf':
 		input_shape = (input_shape[1], input_shape[2],input_shape[3], input_shape[0])
 	input = Input(shape = input_shape)
 	
